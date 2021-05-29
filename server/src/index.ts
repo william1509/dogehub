@@ -12,12 +12,12 @@ app.use((req, res, next) => {
 });
 
 app.get('/videos', (req, res) => {
-  const fileNames = fs.readdirSync("D:/Projects/video-service-free/server/src/public");
+  const fileNames = fs.readdirSync("/root/server/src/public/");
   res.send(fileNames);
 });
 
 app.get('/:vid', (req, res) => {
-  res.sendFile('D:/Projects/video-service-free/server/src/public/' + req.params.vid);
+  res.sendFile('/root/server/src/public/' + req.params.vid);
 });
 
 app.listen(port, '0.0.0.0', () => {
