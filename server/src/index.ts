@@ -12,7 +12,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/videos', (req, res) => {
-  const fileNames = fs.readdirSync("/root/server/src/public");
+  const fileNames = fs.readdirSync("/root/server/src/public/");
   res.send(fileNames);
 });
 
