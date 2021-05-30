@@ -9,7 +9,7 @@
     "serve": "node dist/index.js",
     "watch-node": "nodemon dist/index.js",
     "watch": "tsc && concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
-    "build-ts": "tsc && cp -r src/sslcert dist/sslcert",
+    "build-ts": "tsc && cp -r src/sslcert dist/sslcert && cp -r src/public dist/public",
     "watch-ts": "tsc -w"
   },
   "keywords": [],
