@@ -1,11 +1,12 @@
 import express from 'express';
 import https from 'https';
 import fs from 'fs';
+import path from 'path';
 
 const port = 3000;
 
-const privateKey = fs.readFileSync('/root/server/src/sslcert/selfsigned.key', 'utf8');
-const certificate = fs.readFileSync('/root/server/src/sslcert/selfsigned.crt', 'utf8');
+const privateKey = fs.readFileSync(path.resolve(__dirname, 'sslcert/selfsigned.key'));
+const certificate = fs.readFileSync(path.resolve(__dirname, 'sslcert/selfsigned.crt'));
 
 const options = {
   key: privateKey,
@@ -21,12 +22,12 @@ app.use((req, res, next) => {
 });
 
 app.get('/videos', (req, res) => {
-  const fileNames = fs.readdirSync("/root/server/src/public/");
+  const fileNames = fs.readFileSync(path.resolve(__dirname, "public/"));
   res.send(fileNames);
 });
 
 app.get('/:vid', (req, res) => {
-  res.sendFile('/root/server/src/public/' + req.params.vid);
+  res.sendFile(path.resolve(__dirname, "public/") + req.params.vid);
 });
 
 var server = https.createServer(options, app)

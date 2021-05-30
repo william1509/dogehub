@@ -13,6 +13,6 @@ export class BackendService {
   }
 
   public URL(): String {
-    return'http://104.248.61.205:3000/';
+    return'https://104.248.61.205:3000/';
   }
 }
