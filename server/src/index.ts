@@ -27,7 +27,7 @@ app.get('/videos', (req, res) => {
 });
 
 app.get('/:vid', (req, res) => {
-  res.sendFile(path.resolve(__dirname, "public/") + req.params.vid);
+  res.sendFile(path.resolve(__dirname, "public/" + req.params.vid));
 });
 
 app.on('uncaughtException', function (err) {
