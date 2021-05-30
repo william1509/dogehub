@@ -22,13 +22,17 @@ app.use((req, res, next) => {
 });
 
 app.get('/videos', (req, res) => {
-  const fileNames = fs.readFileSync(path.resolve(__dirname, "public/"));
+  const fileNames = fs.readdirSync(path.resolve(__dirname, "public/"));
   res.send(fileNames);
 });
 
 app.get('/:vid', (req, res) => {
   res.sendFile(path.resolve(__dirname, "public/") + req.params.vid);
 });
+
+app.on('uncaughtException', function (err) {
+  console.log(err);
+}); 
 
 var server = https.createServer(options, app)
 
