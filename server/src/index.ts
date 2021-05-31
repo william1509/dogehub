@@ -5,13 +5,13 @@ import path from 'path';
 
 const port = 3000;
 
-const privateKey = fs.readFileSync(path.resolve(__dirname, 'sslcert/selfsigned.key'));
-const certificate = fs.readFileSync(path.resolve(__dirname, 'sslcert/selfsigned.crt'));
+// const privateKey = fs.readFileSync(path.resolve(__dirname, 'sslcert/selfsigned.key'));
+// const certificate = fs.readFileSync(path.resolve(__dirname, 'sslcert/selfsigned.crt'));
 
-const options = {
-  key: privateKey,
-  cert: certificate
-};
+// const options = {
+//   key: privateKey,
+//   cert: certificate
+// };
 
 const app = express();
 
@@ -34,8 +34,13 @@ app.on('uncaughtException', function (err) {
   console.log(err);
 }); 
 
-var server = https.createServer(options, app)
+// var server = https.createServer(options, app)
 
-server.listen(port, '0.0.0.0', () => {
+// server.listen(port, '0.0.0.0', () => {
+//   return console.log(`server is listening on ${port}`);
+// });
+
+
+app.listen(port, '0.0.0.0', () => {
   return console.log(`server is listening on ${port}`);
-});
+})
