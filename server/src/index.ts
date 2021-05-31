@@ -22,11 +22,13 @@ app.use((req, res, next) => {
 });
 
 app.get('/videos', (req, res) => {
+  console.log("Sending videos")
   const fileNames = fs.readdirSync(path.resolve(__dirname, "public/"));
   res.send(fileNames);
 });
 
 app.get('/:vid', (req, res) => {
+  console.log("Sending vid : " + req.params.vid)
   res.sendFile(path.resolve(__dirname, "public/" + req.params.vid));
 });
 
