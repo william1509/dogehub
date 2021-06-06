@@ -1,0 +1,14 @@
+version: "3.4"
+services:
+  client:
+    network_mode: host
+    container_name: video-service-client
+    build:
+      context: .
+      target: video-service-client
+  server:
+    network_mode: host
+    container_name: video-service-server
+    build:
+      context: .
+      target: video-service-server

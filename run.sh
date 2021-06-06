@@ -1,4 +1,7 @@
 #!/bin/bash
 
-docker build . -t video-service
-docker run -d -p 3000:3000 -it $(docker images -q video-service:latest)
+docker stop $(docker ps -q)
+
+docker-compose build client server
+docker run -d --network host video-service-free_client
+docker run -d --network host video-service-free_server
