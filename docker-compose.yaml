@@ -4,11 +4,11 @@ services:
     network_mode: host
     build:
       context: .
-      target: video-service-client
+      target: dogehub-client
   server:
     network_mode: host
     volumes: 
-      - /root/video-service-free/videos:/root/videos
+      - /root/dogehub/videos:/root/server/videos
     build:
       context: .
-      target: video-service-server
+      target: dogehub-server

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApplicationSettings } from 'src/app/constants/constants';
 import { BackendService } from 'src/app/services/backend.service';
 
 @Component({
@@ -19,6 +20,6 @@ export class MainComponentComponent implements OnInit {
 
   public PlayVideo(video: String): void {
     const videoPlayer = document.getElementById("video-player") as HTMLVideoElement;
-    videoPlayer.src = this.backendService.URL().concat(video.toString())
+    videoPlayer.src = ApplicationSettings.API_ENDPOINT.concat(video.toString())
   }
 }

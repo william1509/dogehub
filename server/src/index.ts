@@ -23,13 +23,13 @@ app.use((req, res, next) => {
 
 app.get('/videos', (req, res) => {
   console.log("Sending videos")
-  const fileNames = fs.readdirSync("/root/videos");
+  const fileNames = fs.readdirSync(__dirname + "/videos");
   res.send(fileNames);
 });
 
 app.get('/:vid', (req, res) => {
   console.log("Sending vid : " + req.params.vid)
-  res.sendFile("/root/videos/" + req.params.vid);
+  res.sendFile(__dirname + "/videos/" + req.params.vid);
 });
 
 app.on('uncaughtException', function (err) {
@@ -41,7 +41,7 @@ app.on('uncaughtException', function (err) {
 // server.listen(port, '0.0.0.0', () => {
 //   return console.log(`server is listening on ${port}`);
 // });
-
+//
 
 app.listen(port, '0.0.0.0', () => {
   return console.log(`server is listening on ${port}`);

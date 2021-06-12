@@ -1,3 +1,9 @@
-.video-list {
-    display: table;
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.buttons-container button {
+    width: 1em;
 }

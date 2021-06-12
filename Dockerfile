@@ -1,4 +1,4 @@
-FROM node:14 AS video-service-server
+FROM node:14 AS dogehub-server
 
 COPY server/ /root/server/
 
@@ -10,9 +10,9 @@ RUN npm install
 
 RUN npm run build
 
-CMD [ "npm", "start" ]
+CMD [ "npm", "start-prod" ]
 
-FROM node:14 AS video-service-client
+FROM node:14 AS dogehub-client
 
 COPY client/ /root/client/
 
