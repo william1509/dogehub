@@ -10,7 +10,7 @@ interface MainComponentProps {
   name: string;
 }
 
-const MainComponent = (props: MainComponentProps) => {
+const MainComponent = () => {
   const [collection, setCollection] = useState<Collection>({
     movies: [],
     series: []
