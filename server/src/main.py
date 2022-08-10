@@ -4,7 +4,7 @@ from flask import Flask, Response, request
 from flask_cors import CORS
 from interfaces import Movie
 import json
-
+from urllib.parse import unquote_plus
 from interfaces import Collection, Serie
 
 app = Flask(__name__)
@@ -15,7 +15,7 @@ def get_collection(path: str) -> Collection:
     movies = []
     series = []
     
-    for element in os.listdir('static'):
+    for element in os.listdir(path):
         item = os.path.join(path, element)
         if os.path.isfile(item):
             movies.append(Movie(
@@ -50,7 +50,7 @@ def get_collection(path: str) -> Collection:
 
     return Collection(movies=movies, series=series)
 
-def get_chunk(filename:str, byte1=None, byte2=None, ):
+def get_chunk(filename:str, byte1=None, byte2=None):
     file_size = os.stat(filename).st_size
     start = 0
     
@@ -60,7 +60,6 @@ def get_chunk(filename:str, byte1=None, byte2=None, ):
         length = byte2 + 1 - byte1
     else:
         length = file_size - start
-
     with open(filename, 'rb') as f:
         f.seek(start)
         chunk = f.read(length)
@@ -73,9 +72,10 @@ def get_movies():
 
     return json.dumps(collection, default=lambda o: o.__dict__)
 
-@app.route("/<uri>", methods=["GET"])
-def send_movie(uri):
+@app.route("/stream", methods=["GET"])
+def send_movie():
     range_header = request.headers.get('Range', None)
+    uri = request.args.get('uri')
     byte1, byte2 = 0, None
     if range_header:
         match = re.search(r'(\d+)-(\d*)', range_header)

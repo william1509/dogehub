@@ -1,0 +1,28 @@
+services:
+  server:
+    container_name: dogehub_server
+    image: dogehub_server
+    ports:
+      - "5000:5000"
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile.server
+    volumes:
+      - ${PWD}/server:/server
+      - ./server/static:/server/static
+
+  client:
+    container_name: dogehub_client
+    image: dogehub_client
+    ports:
+      - "3000:3000"
+    build:
+      context: .
+      dockerfile: ./client/Dockerfile.client
+    volumes:
+      - ${PWD}/client:/client
+      - node_modules:/client/node_modules
+
+volumes:
+  node_modules:
+    name: client_node_modules

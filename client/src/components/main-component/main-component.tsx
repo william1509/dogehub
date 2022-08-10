@@ -44,6 +44,7 @@ const MainComponent = () => {
 
   useEffect(() => {
     initMovieList();
+    console.log("collection", collection);
   }, []);
 
   return (

@@ -14,7 +14,7 @@ const VideoPlayerModal = (props: VideoPlayerModalProps) => {
     <>
       { props.movie? 
       <video width="100%" height="auto" controls>
-      <source src={`${SERVER_URL}/${props.movie.uri}`} type="video/mp4" />
+      <source src={`${SERVER_URL}/stream?uri=${props.movie.uri}`} type="video/mp4" />
       </video> 
       : 
       <Text size="lg" weight={500} color="dimmed">

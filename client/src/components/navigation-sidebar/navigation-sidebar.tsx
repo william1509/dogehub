@@ -63,9 +63,9 @@ const NavigationSidebar = (props: NavigationSidebarProps) => {
   const { classes, cx } = useStyles();
 
   const movieLinks =
-    props.collection?.movies.map((movie) => (
+    props.collection?.movies.map((movie, index) => (
       <NavLink
-        key={movie.id}
+        key={index}
         label={movie.title}
         onClick={() => props.playMovie(movie)}
       />
@@ -77,9 +77,9 @@ const NavigationSidebar = (props: NavigationSidebarProps) => {
       label={serie.title}
       childrenOffset={28}
     >
-      {serie.episodes.map((episode, index) => 
+      {serie.episodes.map((episode, subIndex) => 
         <NavLink
-          key={index}
+          key={subIndex}
           label={episode.title}
           onClick={() => props.playMovie(episode)}
         />
