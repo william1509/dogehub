@@ -15,7 +15,5 @@ COPY ./client/package-lock.json package-lock.json
 RUN npm install --silent
 RUN npm install react-scripts -g --silent
 
-COPY . ./
-
 # start app
 CMD ["npm", "run", "dev"]

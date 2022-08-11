@@ -1,11 +1,7 @@
 FROM python:3.8-slim-buster
-
-WORKDIR /server
-
-# COPY . ./
+COPY ./server/requirements.txt requirements.txt
 
 RUN pip3 install -r requirements.txt
-
-# ENV PYTHONPATH "${PYTHONPATH}:/server/src"
+WORKDIR /server
 
 CMD [ "python3", "-u", "./src/main.py"]

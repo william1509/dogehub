@@ -10,17 +10,17 @@ services:
     volumes:
       - ./server:/server
 
-  # client:
-  #   container_name: dogehub_client
-  #   image: dogehub_client
-  #   ports:
-  #     - "3000:3000"
-  #   build:
-  #     context: .
-  #     dockerfile: ./client/Dockerfile.client
-  #   volumes:
-  #     - ${PWD}/client:/client
-  #     - node_modules:/client/node_modules
+  client:
+    container_name: dogehub_client
+    image: dogehub_client
+    ports:
+      - "3000:3000"
+    build:
+      context: .
+      dockerfile: ./client/Dockerfile.client
+    volumes:
+      - ./client:/client
+      - node_modules:/client/node_modules
 
 volumes:
   node_modules:
