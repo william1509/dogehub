@@ -5,11 +5,10 @@ services:
     ports:
       - "5000:5000"
     build:
-      context: ./server
-      dockerfile: Dockerfile.server
+      context: .
+      dockerfile: ./server/Dockerfile.server
     volumes:
-      - ${PWD}/server:/server
-      - ./server/static:/server/static
+      - ./server:/server
 
   # client:
   #   container_name: dogehub_client
