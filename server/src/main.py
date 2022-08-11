@@ -14,8 +14,12 @@ def get_collection(path: str) -> Collection:
 
     movies = []
     series = []
+
+    files_to_ignore = ['.gitkeep']
     
     for element in os.listdir(path):
+        if element in files_to_ignore:
+            continue
         item = os.path.join(path, element)
         if os.path.isfile(item):
             movies.append(Movie(
