@@ -4,4 +4,6 @@ COPY ./server/requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 WORKDIR /server
 
+EXPOSE 5000
+
 CMD [ "python3", "-u", "./src/main.py"]

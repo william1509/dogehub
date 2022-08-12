@@ -1,19 +1,16 @@
-# pull official base image
 FROM node:slim
 
-# set working directory
-WORKDIR /client
-
-EXPOSE 3000
-
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /client/node_modules/.bin:$PATH
 
 # install app dependencies
 COPY ./client/package.json package.json
 COPY ./client/package-lock.json package-lock.json
+
+WORKDIR /client
+
 RUN npm install --silent
 RUN npm install react-scripts -g --silent
+
+EXPOSE 3000
 
 # start app
 CMD ["npm", "run", "dev"]

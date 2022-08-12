@@ -20,8 +20,3 @@ services:
       dockerfile: ./client/Dockerfile.client
     volumes:
       - ./client:/client
-      - node_modules:/client/node_modules
-
-volumes:
-  node_modules:
-    name: client_node_modules
